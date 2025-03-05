@@ -58,6 +58,7 @@ jobs:
     - name: Build and push image Aliyun
       run: |
         # 登录阿里云
+        echo "$ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY"
         docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY
         docker buildx build -f Dockerfile.app -t $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open_webui_app:latest --platform=linux/arm64 . --load
         docker buildx build -f Dockerfile.app -t $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open_webui_app_aarch64:latest --platform=linux/aarch64 . --load
