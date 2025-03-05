@@ -59,5 +59,7 @@ jobs:
       run: |
         # 登录阿里云
         docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY
-        docker build -f Dockerfile.app -t $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open-webui-app:latest .
-        docker push $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open-webui-app:latest
+        docker buildx build -f Dockerfile.app -t $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open_webui_app:latest --platform=linux/arm64 . --load
+        docker buildx build -f Dockerfile.app -t $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open_webui_app_aarch64:latest --platform=linux/aarch64 . --load
+        docker push $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open_webui_app:latest
+        docker push $ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/open_webui_app_aarch64:latest
