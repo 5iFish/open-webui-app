@@ -96,7 +96,6 @@
 					shareHandler();
 				}}
 			>
-				<Share />
 				<div class="flex items-center">{$i18n.t('Share')}</div>
 			</DropdownMenu.Item>
 
